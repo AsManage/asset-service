@@ -15,11 +15,12 @@ import { LiquidAssetOrm } from './orms/liquid-asset.orm';
 import { LostAssetOrm } from './orms/lost-asset.orm';
 import { AssetCategoryOrm } from './orms/asset-category.orm';
 import { TransferAssetOrm } from './orms/transfer-asset.orm';
+import { AcquireAssetOrm } from './orms/acquire-asset.orm';
+import { AcquireAssetComponentOrm } from './orms/acquire-asset-component.orm';
 
 @Injectable()
 export class AppService {
   constructor(
-<<<<<<< HEAD
     @InjectRepository(AcquisitionSourceOrm)
     private acquisitionSourceRepo: Repository<AcquisitionSourceOrm>,
     @InjectRepository(AllocationReduceAssetOrm)
@@ -44,8 +45,12 @@ export class AppService {
     private liquidAssetRepo: Repository<LiquidAssetOrm>,
     @InjectRepository(TransferAssetOrm)
     private transferAssetRepo: Repository<TransferAssetOrm>,
+    @InjectRepository(LiquidAssetOrm)
+    private AcquireAssetRepo: Repository<AcquireAssetOrm>,
+    @InjectRepository(AcquireAssetComponentOrm)
+    private AcquireAssetComponentRepo: Repository<AcquireAssetComponentOrm>,
   ) {}
-  private AM_ORGANISATION = {
+  private AM_ASSET = {
     ACQUISITION_SOURCE: this.acquisitionSourceRepo,
     ALLOCATION_REDUCE_ASSET: this.allocationReduceAssetRepo,
     ASSET_CATEGORY: this.assetCategoryRepo,
@@ -58,52 +63,35 @@ export class AppService {
     TRANSFER_ASSET: this.transferAssetRepo,
     LIQUID_ASSET: this.liquidAssetRepo,
     ASSET_COMPONENT: this.assetComponentRepo,
-=======
-    @InjectRepository(TenantInfoOrm)
-    private tenantInfoRepo: Repository<TenantInfoOrm>,
-    @InjectRepository(OrganisationUnitOrm)
-    private organisationUnitRepo: Repository<OrganisationUnitOrm>,
-    @InjectRepository(OrganisationUnitTypeOrm)
-    private organisationUnitTypeRepo: Repository<OrganisationUnitTypeOrm>,
-    @InjectRepository(LocationOfOrgUnitOrm)
-    private locationOfOrgUnitOrmRepo: Repository<LocationOfOrgUnitOrm>,
-    @InjectRepository(LocationOrm)
-    private locationOrmRepo: Repository<LocationOrm>,
-  ) {}
-  private AM_ORGANISATION = {
-    TENANT_INFO: this.tenantInfoRepo,
-    ORGANISATION_UNIT: this.organisationUnitRepo,
-    ORGANISATION_UNIT_TYPE: this.organisationUnitTypeRepo,
-    LOCATION: this.locationOrmRepo,
-    LOCATION_OF_ORG_UNIT: this.locationOfOrgUnitOrmRepo,
->>>>>>> 89f14ecd1115a8af53a11edc92af3aca82b39880
+    ACQUIRE_ASSET: this.AcquireAssetRepo,
+    ACQUIRE_ASSET_COMPONENT: this.AcquireAssetComponentRepo,
   };
 
   async getOne(payload?: any, entity?: string) {
     const parsePayload = findOperatorParser(payload);
-    const repository = this.AM_ORGANISATION[entity];
+    const repository = this.AM_ASSET[entity];
     return await repository.findOne({ where: parsePayload });
   }
 
   async getByIds(payload?: any, entity?: string) {
     const parsePayload = findOperatorParser(payload);
-    const repository = this.AM_ORGANISATION[entity];
+    const repository = this.AM_ASSET[entity];
     return await repository.findByIds(parsePayload);
   }
 
   async getList(payload?: any, entity?: string) {
     const parsePayload = findOperatorParser(payload);
-    const repository = this.AM_ORGANISATION[entity];
+    const repository = this.AM_ASSET[entity];
     return await repository.find(parsePayload);
   }
 
   async getListPaging(payload?: any, entity?: string) {
-    const repository = this.AM_ORGANISATION[entity];
+    const repository = this.AM_ASSET[entity];
     return await getListPagingByEntity(payload, repository);
   }
 
   async update(payload?: any, entity?: string) {
-    const repository = this.AM_ORGANISATION[entity];
+    const repository = this.AM_ASSET[entity];
     const { conditions, data, id } = payload;
     const conditionParser = findOperatorParser(conditions);
     const updateData = Object.assign(
@@ -120,7 +108,7 @@ export class AppService {
     return repository.findOne({ where: conditionParser }, entity);
   }
   async save(payload?: any, entity?: string) {
-    const repository = this.AM_ORGANISATION[entity];
+    const repository = this.AM_ASSET[entity];
     const { checkExisted, data } = payload;
     if (isEmpty(checkExisted)) {
       return await repository.save({

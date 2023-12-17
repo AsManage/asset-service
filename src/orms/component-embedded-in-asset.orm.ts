@@ -1,8 +1,8 @@
 import { Entity, Column } from 'typeorm';
 import { AbstractOrm } from './abstract.orm';
 
-@Entity('component_embeded_in_asset')
-export class ComponentEmbededInAssetOrm extends AbstractOrm {
+@Entity('component_embedded_in_asset')
+export class ComponentEmbeddedInAssetOrm extends AbstractOrm {
   @Column({
     name: 'asset_id',
     nullable: false,

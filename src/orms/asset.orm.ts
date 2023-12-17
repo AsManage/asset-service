@@ -1,4 +1,4 @@
-import { Entity, Column, Timestamp } from 'typeorm';
+import { Entity, Column } from 'typeorm';
 import { AbstractOrm } from './abstract.orm';
 
 @Entity('asset')
@@ -37,6 +37,7 @@ export class AssetOrm extends AbstractOrm {
     nullable: true,
   })
   isWarranty: boolean | null;
+
   @Column({
     name: 'warranty_duration',
     nullable: true,
@@ -59,7 +60,7 @@ export class AssetOrm extends AbstractOrm {
     name: 'warranty_end_date',
     nullable: true,
   })
-  warrantyEndDate: Timestamp;
+  warrantyEndDate: string | null;
 
   @Column({
     name: 'warranty_condition',

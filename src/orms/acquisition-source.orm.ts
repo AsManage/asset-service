@@ -10,8 +10,8 @@ export class AcquisitionSourceOrm extends AbstractOrm {
   name: string;
 
   @Column({
-    name: 'desciption',
+    name: 'description',
     nullable: true,
   })
-  desciption: string | null;
+  description: string | null;
 }

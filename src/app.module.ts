@@ -11,7 +11,7 @@ import { AssetComponentOrm } from './orms/asset-component.orm';
 import { AssetCategoryOrm } from './orms/asset-category.orm';
 import { AssetTypeOrm } from './orms/asset-type.orm';
 import { CancelAssetOrm } from './orms/cancel-asset.orm';
-import { ComponentEmbededInAssetOrm } from './orms/component-embeded-in-asset.orm';
+import { ComponentEmbeddedInAssetOrm } from './orms/component-embedded-in-asset.orm';
 import { LostAssetOrm } from './orms/lost-asset.orm';
 import { LiquidAssetOrm } from './orms/liquid-asset.orm';
 import { TransferAssetOrm } from './orms/transfer-asset.orm';
@@ -40,7 +40,7 @@ import { AcquireAssetComponentOrm } from './orms/acquire-asset-component.orm';
             AssetCategoryOrm,
             AssetTypeOrm,
             CancelAssetOrm,
-            ComponentEmbededInAssetOrm,
+            ComponentEmbeddedInAssetOrm,
             LostAssetOrm,
             LiquidAssetOrm,
             TransferAssetOrm,
@@ -64,7 +64,7 @@ import { AcquireAssetComponentOrm } from './orms/acquire-asset-component.orm';
       AssetCategoryOrm,
       AssetTypeOrm,
       CancelAssetOrm,
-      ComponentEmbededInAssetOrm,
+      ComponentEmbeddedInAssetOrm,
       LostAssetOrm,
       LiquidAssetOrm,
       TransferAssetOrm,

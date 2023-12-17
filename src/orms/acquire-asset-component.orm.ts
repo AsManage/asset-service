@@ -1,7 +1,7 @@
 import { Entity, Column } from 'typeorm';
 import { AbstractOrm } from './abstract.orm';
 
-@Entity('accquire_asset_component')
+@Entity('acquire_asset_component')
 export class AcquireAssetComponentOrm extends AbstractOrm {
   isFixedAsset: boolean;
   @Column({

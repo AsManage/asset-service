@@ -10,7 +10,7 @@ import { AssetComponentOrm } from './orms/asset-component.orm';
 import { AssetComponentTypeOrm } from './orms/asset-component-type.orm';
 import { AssetOrm } from './orms/asset.orm';
 import { CancelAssetOrm } from './orms/cancel-asset.orm';
-import { ComponentEmbededInAssetOrm } from './orms/component-embeded-in-asset.orm';
+import { ComponentEmbeddedInAssetOrm } from './orms/component-embedded-in-asset.orm';
 import { LiquidAssetOrm } from './orms/liquid-asset.orm';
 import { LostAssetOrm } from './orms/lost-asset.orm';
 import { AssetCategoryOrm } from './orms/asset-category.orm';
@@ -37,8 +37,8 @@ export class AppService {
     private assetRepo: Repository<AssetOrm>,
     @InjectRepository(CancelAssetOrm)
     private cancelAssetRepo: Repository<CancelAssetOrm>,
-    @InjectRepository(ComponentEmbededInAssetOrm)
-    private componentEmbededInAssetRepo: Repository<ComponentEmbededInAssetOrm>,
+    @InjectRepository(ComponentEmbeddedInAssetOrm)
+    private componentEmbeddedInAssetRepo: Repository<ComponentEmbeddedInAssetOrm>,
     @InjectRepository(LostAssetOrm)
     private lostAssetRepo: Repository<LostAssetOrm>,
     @InjectRepository(LiquidAssetOrm)
@@ -58,7 +58,7 @@ export class AppService {
     ASSET_TYPE: this.assetTypeRepo,
     ASSET: this.assetRepo,
     CANCEL_ASSET: this.cancelAssetRepo,
-    COMPONENT_EMBEDDED_IN_ASSET: this.componentEmbededInAssetRepo,
+    COMPONENT_EMBEDDED_IN_ASSET: this.componentEmbeddedInAssetRepo,
     LOST_ASSET: this.lostAssetRepo,
     TRANSFER_ASSET: this.transferAssetRepo,
     LIQUID_ASSET: this.liquidAssetRepo,
@@ -88,6 +88,11 @@ export class AppService {
   async getListPaging(payload?: any, entity?: string) {
     const repository = this.AM_ASSET[entity];
     return await getListPagingByEntity(payload, repository);
+  }
+
+  async delete(payload?: any, entity?: string) {
+    const repository = this.AM_ASSET[entity];
+    return await repository.delete({ ...payload });
   }
 
   async update(payload?: any, entity?: string) {

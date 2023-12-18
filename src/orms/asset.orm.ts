@@ -103,4 +103,9 @@ export class AssetOrm extends AbstractOrm {
     nullable: false,
   })
   assetTypeId: number;
+  @Column({
+    name: 'tenant_id',
+    nullable: false,
+  })
+  tenantId: number;
 }

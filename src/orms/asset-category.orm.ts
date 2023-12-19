@@ -44,22 +44,4 @@ export class AssetCategoryOrm extends AbstractOrm {
     nullable: true,
   })
   depreciationBasisMinValue: number | null;
-
-  @Column({
-    name: 'sort_id',
-    nullable: true,
-  })
-  sortId: string | null;
-
-  @Column({
-    name: 'is_active',
-    nullable: false,
-  })
-  isActive: boolean;
-
-  @Column({
-    name: 'category_parent_id',
-    nullable: true,
-  })
-  categoryParentId: number;
 }

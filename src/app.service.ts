@@ -82,7 +82,7 @@ export class AppService {
   async getList(payload?: any, entity?: string) {
     const parsePayload = findOperatorParser(payload);
     const repository = this.AM_ASSET[entity];
-    return await repository.find(parsePayload);
+    return await repository.find({ where: parsePayload });
   }
 
   async getListPaging(payload?: any, entity?: string) {
@@ -117,20 +117,18 @@ export class AppService {
     const { checkExisted, data } = payload;
     if (isEmpty(checkExisted)) {
       return await repository.save({
-        ...payload,
+        ...payload.data,
         createdAt: new Date(),
         createdBy: payload.id,
       });
     }
     const existed = await repository.findOne({ where: checkExisted }, entity);
-    console.log(checkExisted);
     if (!isEmpty(existed)) {
       return {
         status: 400,
         message: 'BAD_REQUEST',
       };
     }
-    console.log(data);
     return await repository.save({
       ...data,
       createdAt: new Date(),

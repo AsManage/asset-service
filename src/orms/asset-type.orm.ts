@@ -26,6 +26,7 @@ export class AssetTypeOrm extends AbstractOrm {
     nullable: false,
   })
   isManageByQuantity: boolean;
+
   @Column({
     name: 'category_id',
     nullable: false,

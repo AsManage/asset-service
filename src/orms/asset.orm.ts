@@ -22,6 +22,7 @@ export class AssetOrm extends AbstractOrm {
   image: string | null;
   @Column({
     name: 'original_cost',
+    type: 'double',
     nullable: true,
   })
   originalCost: number | null;
@@ -94,10 +95,10 @@ export class AssetOrm extends AbstractOrm {
   })
   serialNumber: string | null;
   @Column({
-    name: 'acquisition_source',
+    name: 'acquisition_source_id',
     nullable: false,
   })
-  acquisitionSource: number;
+  acquisitionSourceId: number;
   @Column({
     name: 'asset_type_id',
     nullable: false,

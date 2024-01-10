@@ -10,12 +10,6 @@ export class TransferAssetOrm extends AbstractOrm {
   referenceNo: string;
 
   @Column({
-    name: 'quantity',
-    nullable: false,
-  })
-  quantity: number;
-
-  @Column({
     name: 'reason',
     nullable: false,
   })

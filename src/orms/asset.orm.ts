@@ -90,6 +90,10 @@ export class AssetOrm extends AbstractOrm {
   })
   depreciationAmount: number | null;
   @Column({
+    name: 'useful_life',
+  })
+  usefulLife: number | null;
+  @Column({
     name: 'serial_number',
     nullable: true,
   })

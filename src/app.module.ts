@@ -18,6 +18,8 @@ import { TransferAssetOrm } from './orms/transfer-asset.orm';
 import { AssetComponentTypeOrm } from './orms/asset-component-type.orm';
 import { AcquireAssetOrm } from './orms/acquire-asset.orm';
 import { AcquireAssetComponentOrm } from './orms/acquire-asset-component.orm';
+import { AuditSessionOrm } from './orms/audit-session.orm';
+import { AuditAssetMappingOrm } from './orms/audit-asset-mapping.orm';
 
 @Module({
   imports: [
@@ -46,6 +48,8 @@ import { AcquireAssetComponentOrm } from './orms/acquire-asset-component.orm';
             TransferAssetOrm,
             AcquireAssetOrm,
             AcquireAssetComponentOrm,
+            AuditSessionOrm,
+            AuditAssetMappingOrm,
           ],
           synchronize: false,
         };
@@ -70,6 +74,8 @@ import { AcquireAssetComponentOrm } from './orms/acquire-asset-component.orm';
       TransferAssetOrm,
       AcquireAssetComponentOrm,
       AcquireAssetOrm,
+      AuditSessionOrm,
+      AuditAssetMappingOrm,
     ]),
   ],
 

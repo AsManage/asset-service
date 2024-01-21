@@ -10,6 +10,12 @@ export class AuditSessionOrm extends AbstractOrm {
   name: string;
 
   @Column({
+    name: 'status',
+    nullable: true,
+  })
+  status: string;
+
+  @Column({
     name: 'assignee_id',
     nullable: false,
   })
@@ -34,4 +40,10 @@ export class AuditSessionOrm extends AbstractOrm {
     nullable: true,
   })
   endDate: string | null;
+
+  @Column({
+    name: 'tenant_id',
+    nullable: false,
+  })
+  tenantId: number;
 }

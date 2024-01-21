@@ -17,6 +17,8 @@ import { AssetCategoryOrm } from './orms/asset-category.orm';
 import { TransferAssetOrm } from './orms/transfer-asset.orm';
 import { AcquireAssetOrm } from './orms/acquire-asset.orm';
 import { AcquireAssetComponentOrm } from './orms/acquire-asset-component.orm';
+import { AuditSessionOrm } from './orms/audit-session.orm';
+import { AuditAssetMappingOrm } from './orms/audit-asset-mapping.orm';
 
 @Injectable()
 export class AppService {
@@ -49,6 +51,10 @@ export class AppService {
     private AcquireAssetRepo: Repository<AcquireAssetOrm>,
     @InjectRepository(AcquireAssetComponentOrm)
     private AcquireAssetComponentRepo: Repository<AcquireAssetComponentOrm>,
+    @InjectRepository(AuditSessionOrm)
+    private AuditSessionRepo: Repository<AuditSessionOrm>,
+    @InjectRepository(AuditAssetMappingOrm)
+    private AuditAssetMappingRepo: Repository<AuditAssetMappingOrm>,
   ) {}
   private AM_ASSET = {
     ACQUISITION_SOURCE: this.acquisitionSourceRepo,
@@ -65,6 +71,8 @@ export class AppService {
     ASSET_COMPONENT: this.assetComponentRepo,
     ACQUIRE_ASSET: this.AcquireAssetRepo,
     ACQUIRE_ASSET_COMPONENT: this.AcquireAssetComponentRepo,
+    AUDIT_SESSION: this.AuditSessionRepo,
+    AUDIT_ASSET_MAPPING: this.AuditAssetMappingRepo,
   };
 
   async getOne(payload?: any, entity?: string) {
